@@ -1,7 +1,9 @@
 package be.jschoreels.services.wishlist.api.domain;
 
+import java.util.Set;
+
 /**
- * Created by jschoreels on 19.04.17.
+ * Represents a Wish
  */
 interface Wish {
 
@@ -11,6 +13,9 @@ interface Wish {
 
     String getDescription();
 
+    Priority getPriority();
+
+    Set<Tag> getTags();
 
 
 }

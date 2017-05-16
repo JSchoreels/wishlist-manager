@@ -70,6 +70,7 @@
     <modules>
         <module>wishlist-manager-api</module>
         <module>wishlist-manager-core</module>
+        <!--<module>wishlist-manager-springboot</module>-->
     </modules>
 
 </project>

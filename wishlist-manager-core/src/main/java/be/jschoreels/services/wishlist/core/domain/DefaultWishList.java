@@ -1,7 +1,7 @@
 package be.jschoreels.services.wishlist.core.domain;
 
 import be.jschoreels.services.wishlist.api.domain.Wish;
-import be.jschoreels.services.wishlist.api.domain.Wishlist;
+import be.jschoreels.services.wishlist.api.domain.WishList;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -10,13 +10,13 @@ import java.util.List;
 /**
  * Hierarchic collection of {@link Wish}
  */
-public class DefaultWishlist implements Wishlist {
+public class DefaultWishList implements WishList {
 
     private final String id;
     private final String name;
     private final List<Wish> wishes;
 
-    private DefaultWishlist(final Builder builder) {
+    private DefaultWishList(final Builder builder) {
         id = builder.id;
         name = builder.name;
         wishes = builder.wishes;
@@ -41,7 +41,7 @@ public class DefaultWishlist implements Wishlist {
         return new Builder();
     }
 
-    public static Builder copy(final DefaultWishlist copy) {
+    public static Builder copy(final DefaultWishList copy) {
         Builder builder = new Builder();
         builder.id = copy.id;
         builder.name = copy.name;
@@ -79,8 +79,8 @@ public class DefaultWishlist implements Wishlist {
             return this;
         }
 
-        public DefaultWishlist now() {
-            return new DefaultWishlist(this);
+        public DefaultWishList now() {
+            return new DefaultWishList(this);
         }
     }
 }

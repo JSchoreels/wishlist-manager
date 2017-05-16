@@ -5,7 +5,7 @@ import java.util.List;
 /**
  * Hierarchic collection of {@link Wish}
  */
-interface Wishlist {
+public interface Wishlist {
 
     String getId();
 

@@ -5,7 +5,7 @@ import java.util.Set;
 /**
  * Represents a Wish
  */
-interface Wish {
+public interface Wish {
 
     String getId();
 

@@ -69,6 +69,7 @@
 
     <modules>
         <module>wishlist-manager-api</module>
+        <module>wishlist-manager-core</module>
     </modules>
 
 </project>

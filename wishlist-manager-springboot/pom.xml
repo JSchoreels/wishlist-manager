@@ -14,7 +14,20 @@
     <artifactId>wishlist-manager-springboot</artifactId>
     <version>1.0.0-SNAPSHOT</version>
 
+    <name>Wishlist Manager Springboot Rest Service</name>
+
+    <properties>
+        <wishlist-manager-core.version>1.0.0-SNAPSHOT</wishlist-manager-core.version>
+    </properties>
+
     <dependencies>
+        <!-- Domain-->
+        <dependency>
+            <groupId>be.jschoreels.services.wishlist</groupId>
+            <artifactId>wishlist-manager-core</artifactId>
+            <version>${wishlist-manager-core.version}</version>
+        </dependency>
+        <!-- Spring -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
@@ -23,6 +36,7 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
         </dependency>
+        <!-- Format -->
         <dependency>
             <groupId>com.jayway.jsonpath</groupId>
             <artifactId>json-path</artifactId>

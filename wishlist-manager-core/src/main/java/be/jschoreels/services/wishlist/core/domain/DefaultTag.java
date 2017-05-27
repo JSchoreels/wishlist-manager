@@ -10,7 +10,7 @@ public class DefaultTag implements Tag {
 
     private final String name;
 
-    public DefaultTag(final String name) {
+    private DefaultTag(final String name) {
         this.name = name;
     }
 

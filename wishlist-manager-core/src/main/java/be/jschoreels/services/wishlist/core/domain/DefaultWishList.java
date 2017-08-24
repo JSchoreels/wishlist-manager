@@ -12,7 +12,7 @@ import java.util.List;
  */
 public class DefaultWishList implements WishList {
 
-    private final String id;
+    private final Integer id;
     private final String name;
     private final List<Wish> wishes;
 
@@ -23,7 +23,7 @@ public class DefaultWishList implements WishList {
     }
 
     @Override
-    public String getId() {
+    public Integer getId() {
         return id;
     }
 
@@ -51,7 +51,7 @@ public class DefaultWishList implements WishList {
 
 
     public static final class Builder {
-        private String id;
+        private Integer id;
         private String name;
         private List<Wish> wishes;
 
@@ -59,7 +59,7 @@ public class DefaultWishList implements WishList {
             wishes = new ArrayList<>();
         }
 
-        public Builder withId(final String val) {
+        public Builder withId(final Integer val) {
             id = val;
             return this;
         }

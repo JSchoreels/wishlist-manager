@@ -47,7 +47,7 @@ public class DefaultWishListTest {
 
     private DefaultWishList createDefaultWishlist(final Wish wish1, final Wish wish2, final Wish wish3) {
         return DefaultWishList.create()
-            .withId("id")
+            .withId(3)
             .withName("name")
             .withWish(wish1)
             .withWishes(Arrays.asList(wish2, wish3))

@@ -42,7 +42,7 @@ public class DefaultWishTest {
     public static DefaultWish createDefaultWish() {
         return DefaultWish.create()
             .withDescription("description")
-            .withId("id")
+            .withId(3)
             .withName("name")
             .withPriority(
                 DefaultPriority.withLevel(2))

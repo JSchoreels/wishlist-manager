@@ -14,7 +14,7 @@ import java.util.Set;
  */
 public class DefaultWish implements Wish {
 
-    private final String id;
+    private final Integer id;
     private final String name;
     private final String description;
     private final Priority priority;
@@ -43,7 +43,7 @@ public class DefaultWish implements Wish {
     }
 
     @Override
-    public String getId() {
+    public Integer getId() {
         return id;
     }
 
@@ -68,7 +68,7 @@ public class DefaultWish implements Wish {
     }
 
     public static final class Builder {
-        private String id;
+        private Integer id;
         private String name;
         private String description;
         private Priority priority;
@@ -78,7 +78,7 @@ public class DefaultWish implements Wish {
             tags = new HashSet<>();
         }
 
-        public Builder withId(final String val) {
+        public Builder withId(final Integer val) {
             id = val;
             return this;
         }

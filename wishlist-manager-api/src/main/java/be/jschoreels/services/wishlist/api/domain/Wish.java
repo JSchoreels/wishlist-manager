@@ -7,7 +7,7 @@ import java.util.Set;
  */
 public interface Wish {
 
-    String getId();
+    Integer getId();
 
     String getName();
 

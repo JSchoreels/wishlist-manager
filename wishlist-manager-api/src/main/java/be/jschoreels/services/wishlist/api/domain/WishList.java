@@ -7,7 +7,7 @@ import java.util.List;
  */
 public interface WishList {
 
-    String getId();
+    Integer getId();
 
     String getName();
 

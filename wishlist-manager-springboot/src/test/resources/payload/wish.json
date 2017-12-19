@@ -1,0 +1,22 @@
+{
+  "id": 1,
+  "name": "name",
+  "description": "description",
+  "priority": {
+    "level": 2
+  },
+  "tags": [
+    {
+      "name": "Tag3"
+    },
+    {
+      "name": "Tag2"
+    },
+    {
+      "name": "Tag4"
+    },
+    {
+      "name": "Tag1"
+    }
+  ]
+}

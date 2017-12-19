@@ -1,19 +1,20 @@
 package be.jschoreels.services.wishlist.springboot.domain.entity;
 
-import be.jschoreels.services.wishlist.api.domain.Priority;
-import be.jschoreels.services.wishlist.api.domain.Tag;
 import be.jschoreels.services.wishlist.api.domain.Wish;
 
 import javax.persistence.Access;
 import javax.persistence.AccessType;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import java.io.Serializable;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 
 /**
@@ -28,17 +29,18 @@ public class EntityWish implements Wish, Serializable {
     private Integer id;
     private String name;
     private String description;
-    @OneToOne(targetEntity = EntityPriority.class)
-    private Priority priority;
-    @OneToMany(targetEntity = EntityTag.class)
-    private Set<Tag> tags;
+    @ManyToOne(targetEntity = EntityPriority.class,
+        cascade = CascadeType.ALL)
+    private EntityPriority priority;
+    @ManyToMany(targetEntity = EntityTag.class,
+        cascade = CascadeType.ALL)
+    private Set<EntityTag> tags;
 
     EntityWish() {
 
     }
 
     private EntityWish(final Builder builder) {
-        id = builder.id;
         name = builder.name;
         description = builder.description;
         priority = builder.priority;
@@ -49,13 +51,14 @@ public class EntityWish implements Wish, Serializable {
         return new Builder();
     }
 
-    public static Builder newBuilder(final EntityWish copy) {
+    public static Builder newBuilder(final Wish copy) {
         Builder builder = new Builder();
-        builder.id = copy.id;
-        builder.name = copy.name;
-        builder.description = copy.description;
-        builder.priority = copy.priority;
-        builder.tags = copy.tags;
+        builder.name = copy.getName();
+        builder.description = copy.getDescription();
+        builder.priority = EntityPriority.newBuilder(copy.getPriority()).build();
+        builder.tags = copy.getTags().stream()
+            .map(tag -> EntityTag.newBuilder(tag).build())
+            .collect(Collectors.toSet());
         return builder;
     }
 
@@ -75,29 +78,23 @@ public class EntityWish implements Wish, Serializable {
     }
 
     @Override
-    public Priority getPriority() {
+    public EntityPriority getPriority() {
         return priority;
     }
 
     @Override
-    public Set<Tag> getTags() {
+    public Set<EntityTag> getTags() {
         return tags;
     }
 
     public static final class Builder {
 
-        private Integer id;
         private String name;
         private String description;
-        private Priority priority;
-        private Set<Tag> tags;
+        private EntityPriority priority;
+        private Set<EntityTag> tags;
 
         private Builder() {
-        }
-
-        public Builder withId(final Integer id) {
-            this.id = id;
-            return this;
         }
 
         public Builder withName(final String name) {
@@ -110,12 +107,12 @@ public class EntityWish implements Wish, Serializable {
             return this;
         }
 
-        public Builder withPriority(final Priority priority) {
+        public Builder withPriority(final EntityPriority priority) {
             this.priority = priority;
             return this;
         }
 
-        public Builder withTags(final Set<Tag> tags) {
+        public Builder withTags(final Set<EntityTag> tags) {
             this.tags = tags;
             return this;
         }

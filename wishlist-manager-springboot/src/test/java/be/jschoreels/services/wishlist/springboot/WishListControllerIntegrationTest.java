@@ -6,9 +6,9 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.context.embedded.LocalServerPort;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
+import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringRunner;
 
@@ -42,8 +42,8 @@ public class WishListControllerIntegrationTest {
     @Test
     public void createAndGetSpecificwishList() throws Exception {
         template.postForEntity(postWishListBase.toString(), "specific", String.class);
-        final ResponseEntity<JacksonWishList[]> response = template.getForEntity(getWishListBase + "/specific", JacksonWishList[].class);
-        assertThat(response.getBody()[0].getName(), CoreMatchers.equalTo("specific"));
+        final ResponseEntity<JacksonWishList> response = template.getForEntity(getWishListBase + "/1", JacksonWishList.class);
+        assertThat(response.getBody().getName(), CoreMatchers.equalTo("specific"));
     }
 
 }

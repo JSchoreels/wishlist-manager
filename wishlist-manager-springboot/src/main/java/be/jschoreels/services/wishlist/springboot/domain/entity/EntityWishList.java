@@ -5,6 +5,7 @@ import be.jschoreels.services.wishlist.api.domain.WishList;
 
 import javax.persistence.Access;
 import javax.persistence.AccessType;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -26,13 +27,12 @@ public class EntityWishList implements WishList, Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
     private String name;
-    @OneToMany(targetEntity=EntityWish.class, fetch= FetchType.EAGER)
+    @OneToMany(targetEntity=EntityWish.class, cascade = CascadeType.ALL)
     private List<Wish> wishes;
 
     EntityWishList(){}
 
     private EntityWishList(final Builder builder) {
-        id = builder.id;
         name = builder.name;
         wishes = builder.wishes;
     }
@@ -41,11 +41,10 @@ public class EntityWishList implements WishList, Serializable {
         return new Builder();
     }
 
-    public static Builder newBuilder(final EntityWishList copy) {
+    public static Builder newBuilder(final WishList copy) {
         Builder builder = new Builder();
-        builder.id = copy.id;
-        builder.name = copy.name;
-        builder.wishes = copy.wishes;
+        builder.name = copy.getName();
+        builder.wishes = copy.getWishes();
         return builder;
     }
 
@@ -66,16 +65,10 @@ public class EntityWishList implements WishList, Serializable {
 
     public static final class Builder {
 
-        private Integer id;
         private String name;
         private List<Wish> wishes;
 
         private Builder() {
-        }
-
-        public Builder withId(final Integer id) {
-            this.id = id;
-            return this;
         }
 
         public Builder withName(final String name) {

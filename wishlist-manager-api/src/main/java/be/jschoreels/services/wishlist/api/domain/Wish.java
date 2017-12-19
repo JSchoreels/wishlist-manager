@@ -15,7 +15,7 @@ public interface Wish {
 
     Priority getPriority();
 
-    Set<Tag> getTags();
+    Set<? extends Tag> getTags();
 
 
 }

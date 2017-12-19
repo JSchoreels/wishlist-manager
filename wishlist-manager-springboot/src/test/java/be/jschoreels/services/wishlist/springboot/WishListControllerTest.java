@@ -28,9 +28,9 @@ public class WishListControllerTest {
     @DirtiesContext
     public void getSpecialwishList() throws Exception {
         mvc.perform(MockMvcRequestBuilders.post("/wishlist").content("specialName"));
-        mvc.perform(MockMvcRequestBuilders.get("/wishlists/specialName").accept(MediaType.ALL))
+        mvc.perform(MockMvcRequestBuilders.get("/wishlists/1").accept(MediaType.ALL))
             .andExpect(MockMvcResultMatchers.status().isOk())
-            .andExpect(MockMvcResultMatchers.content().json("[{\"id\":1,\"name\":\"specialName\",\"wishes\":[]}]"));
+            .andExpect(MockMvcResultMatchers.content().json("{\"id\":1,\"name\":\"specialName\",\"wishes\":[]}"));
     }
 
     @Test

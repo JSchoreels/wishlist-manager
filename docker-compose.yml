@@ -1,0 +1,22 @@
+version: '3.1'
+
+services:
+  wishlistmanager:
+    image: jschoreels/wishlist-manager-springboot:1.0.0-SNAPSHOT
+    ports:
+      - 1000:8080
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://wishlist_db:5432/wishlistmanager
+      SPRING_DATASOURCE_PASSWORD: secret
+
+  wishlist_db:
+    image: postgres:9.6.8
+    environment:
+      POSTGRES_DB: wishlistmanager
+      POSTGRES_USER: wishlistmanager-app
+      POSTGRES_PASSWORD: secret
+
+  adminer:
+    image: adminer
+    ports:
+      - 8080:8080

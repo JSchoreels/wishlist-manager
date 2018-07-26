@@ -20,6 +20,7 @@
         <wishlist-manager-core.version>1.0.0-SNAPSHOT</wishlist-manager-core.version>
         <h2.version>1.4.195</h2.version>
         <docker.image.user>jschoreels</docker.image.user>
+        <springfox-swagger2.version>2.7.0</springfox-swagger2.version>
     </properties>
 
     <dependencies>
@@ -61,6 +62,16 @@
             <artifactId>h2</artifactId>
             <version>${h2.version}</version>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger2</artifactId>
+            <version>${springfox-swagger2.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger-ui</artifactId>
+            <version>${springfox-swagger2.version}</version>
         </dependency>
     </dependencies>
 

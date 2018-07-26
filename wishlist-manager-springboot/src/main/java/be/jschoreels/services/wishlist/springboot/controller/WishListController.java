@@ -54,7 +54,8 @@ public class WishListController {
             .orElseThrow(() -> new WishlistNotFoundException(id));
     }
 
-    @RequestMapping(value = "wishlists", method = RequestMethod.GET)
+    @RequestMapping(value = "wishlists", meth
+        od = RequestMethod.GET)
     public List<WishList> getWishLists(Pageable pageable) {
         logger.info("Received a request to search all wishlists");
         return wishListService.getWishLists(pageable);
@@ -72,4 +73,5 @@ public class WishListController {
         logger.info("Received a request to create new wish {} in wishlist of id {}", wish, id);
         return wishListService.addWishToWishlist(id, wish);
     }
+
 }

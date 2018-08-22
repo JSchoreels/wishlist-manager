@@ -64,4 +64,9 @@ public class WishListService {
         return wishListRepository.save(entityWishList);
     }
 
+    @Transactional
+    public void removeWishToWishlist(Integer id) {
+        wishListRepository.deleteById(id);
+    }
+
 }

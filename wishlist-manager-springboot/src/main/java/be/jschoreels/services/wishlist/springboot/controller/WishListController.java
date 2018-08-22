@@ -54,6 +54,12 @@ public class WishListController {
             .orElseThrow(() -> new WishlistNotFoundException(id));
     }
 
+    @RequestMapping(value = "wishlists/{id}", method = RequestMethod.DELETE)
+    public void removeWishList(@PathVariable(value = "id") Integer id) {
+        logger.info("Received a request to delete wishlist with name \"{}\"", id);
+        wishListService.removeWishToWishlist(id);
+    }
+
     @RequestMapping(value = "wishlists", method = RequestMethod.GET)
     public List<WishList> getWishLists(Pageable pageable) {
         logger.info("Received a request to search all wishlists");
